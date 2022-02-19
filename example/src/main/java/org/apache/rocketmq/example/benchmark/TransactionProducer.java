@@ -164,8 +164,9 @@ public class TransactionProducer {
                             while (currentRT > prevMaxRT) {
                                 boolean updated = statsBenchmark.getSendMessageMaxRT()
                                         .compareAndSet(prevMaxRT, currentRT);
-                                if (updated)
+                                if (updated) {
                                     break;
+                                }
 
                                 prevMaxRT = statsBenchmark.getSendMessageMaxRT().get();
                             }
